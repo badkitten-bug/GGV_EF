@@ -10,3 +10,12 @@ class Producto(models.Model):
     Fecha_compra = models.DateField()
     Fecha_registro = models.DateTimeField()
     estado = models.TextField()
+
+class Curso(models.Model):
+    codigo = models.CharField(max_length=100)
+    nombre = models.TextField()
+    horas = models.CharField(max_length=100)
+    creditos = models.CharField(max_length=100)
+    Fecha_registro = models.DateTimeField()
+    estado = models.TextField()
+

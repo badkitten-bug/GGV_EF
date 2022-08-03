@@ -3,6 +3,7 @@ import xdrlib
 from django.shortcuts import render, HttpResponse, redirect
 from requests import request
 from miapp.models import Producto
+from miapp.models import Curso
 
 # Create your views here.
 
@@ -51,4 +52,18 @@ def crear_producto(request):
     producto.save()
 
     return HttpResponse(f"Producto Creado: {producto.codigo} - {producto.nombre} - {producto.precio_compra} - {producto.precio_venta} - {producto.Fecha_compra} - {producto.Fecha_registro} - {producto.estado}")
+    
+def crear_curso(request):
+    
+    curso = Curso(
+        codigo = "MBDSH1",
+        nombre = "Matemática IV",
+        horas = "6",
+        creditos = "3",
+        Fecha_registro = "2022-09-10",
+        estado = "A"
+    )
+    curso.save()
+
+    return HttpResponse(f"Curo Creado: {curso.codigo} - {curso.nombre} - {curso.horas} - {curso.creditos} - {curso.Fecha_registro} - {curso.estado}")
     
