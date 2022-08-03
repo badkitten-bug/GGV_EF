@@ -1,8 +1,8 @@
 from ast import Return
 import xdrlib
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from requests import request
-from miapp.models import Estudiante
+from miapp.models import Producto
 
 # Create your views here.
 
@@ -36,32 +36,19 @@ def integrantes(request):
         'estudiantes': estudiantes
     })
 
-   
 
-
-def crear_estudiante(request):
-    estudiante = Estudiante(
-        codigo="1813011641",
-        dni="72721675",
-        nombre="emiliano",
-        apepat="Sanchez",
-        apemat="Maldonado",
-        direccion="Mz b lote 10 -PuntaHermosa",
-        telefono="958236731",
-        estado="A",
+def crear_producto(request):
+    
+    producto = Producto(
+        codigo = "1926040817",
+        nombre = "oro",
+        precio_compra = "8.5",
+        precio_venta = "12",
+        Fecha_compra = "2022-04-15",
+        Fecha_registro = "2022-08-12",
+        estado = "A"
     )
-    estudiante.save()
-    return HttpResponse(f"<h1>Estudiantes Registrados</h1>" +
-                        f"<br> <b>Codigo:</b> {estudiante.codigo} <br> <b>DNI:</b> {estudiante.dni} <br> <b>Nombre:</b> {estudiante.nombre}" +
-                        f"<br> <b>ApellidoPaterno:</b> {estudiante.apepat} <br> <b>ApellidoMaterno:</b> {estudiante.apemat} <br> <b>Direccion:</b> {estudiante.direccion}" +
-                        f"<br> <b>Telefono:</b> {estudiante.telefono} <br> <b>Estado:</b> {estudiante.estado}")
+    producto.save()
 
-def crearcurso(request):
-        return render(request, 'crear-curso.html', {
-            'titulo': 'Crear Curso'
-        })
-
-def crearproducto(request):
-        return render(request, 'crear-producto.html', {
-            'titulo': 'Crear Productos'
-        })
+    return HttpResponse(f"Producto Creado: {producto.codigo} - {producto.nombre} - {producto.precio_compra} - {producto.precio_venta} - {producto.Fecha_compra} - {producto.Fecha_registro} - {producto.estado}")
+    
